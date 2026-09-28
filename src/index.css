@@ -11,12 +11,6 @@
     @apply overflow-x-hidden font-sans bg-cream text-olive-dark antialiased;
   }
 
-  /* Custom cursor only on fine pointers (desktop) */
-  html.has-custom-cursor,
-  html.has-custom-cursor * {
-    cursor: none !important;
-  }
-
   section[id],
   #consult {
     scroll-margin-top: 5rem;

@@ -57,16 +57,19 @@ export default function Facility() {
                 Olive Aesthetics
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-[15px]">
-                Olive Aesthetics is a premier aesthetic, skin, and hair clinic
-                in Gurgaon, offering advanced treatments under the expert care of
-                Dr. (Maj) Pooja Yadav. From laser hair reduction and HydraFacial
-                to injectables, HIFU, and anti-ageing solutions — every treatment
-                is doctor-led and tailored to your unique needs.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-[15px]">
-                Located at Sector-46 HUDA Market, our clinic provides a clean,
-                sterilized environment with wheelchair access, easy parking, and
-                a dedicated medical team committed to natural, lasting results.
+                At Olive Aesthetics, we are a leading aesthetic, skin, and hair
+                clinic in Gurgaon offering advanced, safe, and result-driven
+                treatments led by qualified doctors. We specialize in skin
+                rejuvenation, acne and pigmentation treatment, laser hair
+                removal, anti-aging solutions, and advanced hair restoration
+                including PRP therapy. Using FDA-approved technologies and
+                modern techniques, we deliver personalized care designed to
+                achieve natural, visible, and long-lasting results. Whether you
+                want clearer skin, youthful radiance, or stronger hair growth,
+                our customized treatment plans are tailored to your needs.
+                Recognized as one of the best skin and hair clinics in Gurgaon,
+                we combine medical expertise with affordable luxury care to
+                enhance your confidence and overall wellness.
               </p>
               <a
                 href="#about"

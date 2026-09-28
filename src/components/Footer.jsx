@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin } from 'lucide-react'
-import { doctorInfo, assets } from '../data/content'
+import { assets } from '../data/content'
 import { fadeUp, stagger } from './Motion'
 
 const quickLinks = [
@@ -9,6 +8,10 @@ const quickLinks = [
   { label: 'Locations', href: '#facility' },
   { label: 'Reviews', href: '#reviews' },
 ]
+
+const phone = '+91 98180 72098'
+const email = 'Oliveaesthetics.in@gmail.com'
+const address = 'Olive Aesthetics First Floor, DSS 227, Sector – 46 HUDA Market Gurgaon 122001'
 
 export default function Footer() {
   return (
@@ -20,7 +23,8 @@ export default function Footer() {
         viewport={{ once: true, amount: 0.2 }}
         variants={stagger}
       >
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+          {/* Brand */}
           <motion.div variants={fadeUp}>
             <a href="#" className="inline-block">
               <img
@@ -29,15 +33,16 @@ export default function Footer() {
                 className="h-12 w-auto object-contain"
               />
             </a>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/70">
-              Trusted neighborhood healthcare since 2012. Providing
-              comprehensive aesthetic and primary care with excellence and
-              compassion.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/75">
+              Trusted neighbourhood healthcare since 2012. Providing
+              comprehensive primary care and speciality diagnostics with
+              clinical excellence.
             </p>
           </motion.div>
 
+          {/* Quick Links */}
           <motion.div variants={fadeUp}>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gold">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-white">
               Quick Links
             </h4>
             <ul className="mt-4 space-y-2.5">
@@ -54,32 +59,33 @@ export default function Footer() {
             </ul>
           </motion.div>
 
+          {/* Contact Us */}
           <motion.div variants={fadeUp}>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gold">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-white">
               Contact Us
             </h4>
-            <ul className="mt-4 space-y-3">
-              <li className="flex items-start gap-2.5 text-sm text-cream/80">
-                <Phone size={16} className="mt-0.5 shrink-0 text-gold" />
+            <ul className="mt-4 space-y-3 text-sm text-cream/80">
+              <li>
+                <span className="font-semibold text-white">Phone: </span>
                 <a
-                  href={`tel:${doctorInfo.phone.replace(/\s/g, '')}`}
+                  href={`tel:${phone.replace(/\s/g, '')}`}
                   className="hover:text-gold"
                 >
-                  {doctorInfo.phone}
+                  {phone}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-sm text-cream/80">
-                <Mail size={16} className="mt-0.5 shrink-0 text-gold" />
+              <li>
+                <span className="font-semibold text-white">Email: </span>
                 <a
-                  href={`mailto:${doctorInfo.email}`}
+                  href={`mailto:${email}`}
                   className="break-all hover:text-gold"
                 >
-                  {doctorInfo.email}
+                  {email}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-sm text-cream/80">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-gold" />
-                <span>{doctorInfo.location}</span>
+              <li>
+                <span className="font-semibold text-white">Address: </span>
+                <span>{address}</span>
               </li>
             </ul>
           </motion.div>

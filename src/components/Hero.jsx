@@ -1,32 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import {
-  BadgeCheck,
-  Star,
-  ParkingCircle,
-  Accessibility,
-  Phone,
-  Languages,
-  Users,
-  Stethoscope,
-  ShieldCheck,
-  UserCheck,
-  Calendar,
-  ArrowRight,
-} from 'lucide-react'
-import { highlights, features, doctorInfo, assets } from '../data/content'
+import { BadgeCheck, Star, Calendar, ArrowRight } from 'lucide-react'
+import { highlights, doctorInfo, assets } from '../data/content'
 import { fadeUp, stagger, scaleIn, slideRight, slideLeft } from './Motion'
-
-const featureIcons = {
-  parking: ParkingCircle,
-  accessibility: Accessibility,
-  phone: Phone,
-  languages: Languages,
-  users: Users,
-  stethoscope: Stethoscope,
-  shield: ShieldCheck,
-  'user-check': UserCheck,
-}
 
 function Stars({ count = 5 }) {
   return (
@@ -37,6 +13,12 @@ function Stars({ count = 5 }) {
     </div>
   )
 }
+
+const statPills = [
+  doctorInfo.experience,
+  doctorInfo.languages,
+  doctorInfo.patients,
+]
 
 function ConsultationForm() {
   const [form, setForm] = useState({ name: '', phone: '', date: '' })
@@ -55,20 +37,20 @@ function ConsultationForm() {
     <motion.div
       id="consult"
       variants={slideRight}
-      className="w-full rounded-2xl bg-white p-5 shadow-form lg:sticky lg:top-24"
+      className="w-full rounded-2xl border border-gray-100 bg-white p-5 shadow-form sm:p-6 lg:sticky lg:top-24"
     >
-      <div className="mb-4 rounded-xl bg-[#F7F3EB] px-3 py-2.5 text-center">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-olive/70">
+      <div className="mb-5 rounded-xl bg-[#F7F3EB] px-3 py-3 text-center">
+        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-olive/80">
           Next Open Slot
         </p>
-        <p className="mt-0.5 text-xs font-medium text-olive-dark">
+        <p className="mt-1 text-xs font-medium leading-snug text-olive-dark">
           {doctorInfo.hours} | {doctorInfo.addressShort}
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-3.5">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="mb-1 block text-xs font-medium text-olive-dark">
+          <label className="mb-1.5 block text-xs font-medium text-olive-dark">
             Full Name
           </label>
           <input
@@ -78,15 +60,15 @@ function ConsultationForm() {
             value={form.name}
             onChange={handleChange}
             placeholder="Enter your full name"
-            className="input-field"
+            className="input-field rounded-xl"
           />
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium text-olive-dark">
+          <label className="mb-1.5 block text-xs font-medium text-olive-dark">
             Phone Number
           </label>
-          <div className="flex overflow-hidden rounded-lg border border-gray-200 focus-within:border-gold focus-within:ring-2 focus-within:ring-gold/30">
+          <div className="flex overflow-hidden rounded-xl border border-gray-200 focus-within:border-gold focus-within:ring-2 focus-within:ring-gold/30">
             <span className="flex items-center border-r border-gray-200 bg-gray-50 px-3 text-sm text-gray-500">
               +91
             </span>
@@ -103,7 +85,7 @@ function ConsultationForm() {
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium text-olive-dark">
+          <label className="mb-1.5 block text-xs font-medium text-olive-dark">
             Preferred Date
           </label>
           <div className="relative">
@@ -113,7 +95,7 @@ function ConsultationForm() {
               required
               value={form.date}
               onChange={handleChange}
-              className="input-field pr-10"
+              className="input-field rounded-xl pr-10"
             />
             <Calendar
               size={16}
@@ -127,7 +109,10 @@ function ConsultationForm() {
           medical coordination team.
         </p>
 
-        <button type="submit" className="btn-gold w-full text-sm font-semibold">
+        <button
+          type="submit"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-gold-muted hover:shadow-md active:scale-[0.98]"
+        >
           Request Consultation
           <ArrowRight size={16} />
         </button>
@@ -143,74 +128,82 @@ export default function Hero() {
         className="section-wrap"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.08 }}
         variants={stagger}
       >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          {/* Doctor photo */}
+        {/* 3-col: photo | details | form */}
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-7">
+          {/* Left — portrait */}
           <motion.div
             variants={slideLeft}
-            className="mx-auto w-full max-w-sm md:max-w-none lg:col-span-3"
+            className="mx-auto w-full max-w-[280px] sm:max-w-sm md:max-w-none lg:col-span-3"
           >
-            <div className="overflow-hidden rounded-2xl bg-white shadow-soft">
+            <div className="overflow-hidden rounded-xl shadow-soft">
               <img
                 src={assets.doctor}
                 alt={doctorInfo.name}
-                className="aspect-[3/4] max-h-[420px] w-full object-cover object-top sm:max-h-none"
+                className="aspect-[3/4] w-full object-cover object-top"
               />
             </div>
           </motion.div>
 
-          {/* Details + offers */}
+          {/* Middle — profile + highlights */}
           <motion.div variants={fadeUp} className="md:col-span-1 lg:col-span-5">
             <div className="mb-2 flex items-center gap-1.5 text-sm text-olive">
               <BadgeCheck size={18} className="fill-olive text-cream" />
               <span className="font-medium">Verified Medical Practitioner</span>
             </div>
 
-            <h1 className="font-serif text-2xl font-semibold leading-tight text-olive-dark sm:text-3xl lg:text-[2rem]">
+            <h1 className="font-serif text-[1.65rem] font-semibold leading-tight text-olive-dark sm:text-3xl lg:text-[2rem]">
               {doctorInfo.name}
             </h1>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1.5 text-sm text-gray-500">
               {doctorInfo.qualifications}
             </p>
 
-            <div className="mt-2 flex flex-wrap items-center gap-2">
+            <div className="mt-2.5 flex flex-wrap items-center gap-2">
               <Stars />
-              <span className="text-sm text-gray-500">
-                ({doctorInfo.reviews} reviews)
+              <span className="text-sm text-gray-600">
+                {doctorInfo.rating}{' '}
+                <span className="text-gray-500">
+                  ({doctorInfo.reviews} reviews)
+                </span>
               </span>
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-olive-dark sm:text-sm">
-              <span className="font-medium">{doctorInfo.experience}</span>
-              <span className="hidden h-3 w-px bg-gray-300 sm:block" />
-              <span>{doctorInfo.languages}</span>
-              <span className="hidden h-3 w-px bg-gray-300 sm:block" />
-              <span>{doctorInfo.patients}</span>
+            {/* Capsule stats — Figma style */}
+            <div className="mt-3.5 flex flex-wrap gap-2">
+              {statPills.map((label) => (
+                <span
+                  key={label}
+                  className="rounded-full border border-gray-200 bg-white px-3 py-1 text-[11px] font-medium text-olive-dark sm:text-xs"
+                >
+                  {label}
+                </span>
+              ))}
             </div>
 
-            {/* Offer cards from Figma assets */}
-            <div className="mt-5">
-              <h3 className="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-olive-dark">
+            {/* Highlights */}
+            <div className="mt-6">
+              <h3 className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-olive-dark">
                 Key Professional Highlights
               </h3>
               <motion.div
                 variants={stagger}
-                className="grid grid-cols-2 gap-2.5 sm:grid-cols-3"
+                className="flex flex-wrap justify-center gap-2.5"
               >
                 {highlights.map((item) => (
                   <motion.div
                     key={item.id}
                     variants={scaleIn}
                     whileHover={{
-                      scale: 1.05,
-                      y: -4,
-                      boxShadow: '0 12px 28px rgba(74, 83, 60, 0.12)',
+                      scale: 1.04,
+                      y: -3,
+                      boxShadow: '0 10px 24px rgba(74, 83, 60, 0.12)',
                     }}
                     transition={{ type: 'spring', stiffness: 340, damping: 20 }}
-                    className="overflow-hidden rounded-lg bg-white shadow-sm"
+                    className="w-[calc(50%-0.3125rem)] overflow-hidden rounded-lg border border-gold/30 bg-white sm:w-[calc((100%-1.25rem)/3)]"
                   >
                     <img
                       src={item.image}
@@ -221,30 +214,9 @@ export default function Hero() {
                 ))}
               </motion.div>
             </div>
-
-            {/* Features row */}
-            <div className="mt-5 -mx-1 flex gap-2 overflow-x-auto pb-2 sm:mx-0 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0 md:grid-cols-8 md:gap-3">
-              {features.map((f) => {
-                const Icon = featureIcons[f.icon] || ShieldCheck
-                return (
-                  <motion.div
-                    key={f.label}
-                    whileHover={{ y: -3, scale: 1.06 }}
-                    className="flex w-[72px] shrink-0 flex-col items-center gap-1.5 text-center sm:w-auto"
-                  >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 transition group-hover:border-gold">
-                      <Icon size={16} className="text-gold" strokeWidth={1.5} />
-                    </div>
-                    <span className="text-[9px] leading-tight text-gray-600 sm:text-[10px]">
-                      {f.label}
-                    </span>
-                  </motion.div>
-                )
-              })}
-            </div>
           </motion.div>
 
-          {/* Form — full width under content on tablet, side column on desktop */}
+          {/* Right — booking form */}
           <div className="md:col-span-2 lg:col-span-4">
             <ConsultationForm />
           </div>

@@ -33,22 +33,41 @@ export const highlights = [
     image: a('/assets/Property 1=Frame 6.png'),
     alt: 'Botox 300/unit',
   },
-  {
-    id: 6,
-    image: a('/assets/Property 1=Default.png'),
-    alt: 'Flat 30% on Hair transplant',
-  },
 ]
 
 export const features = [
-  { label: 'Easy Parking', icon: 'parking' },
-  { label: 'Wheelchair Accessible', icon: 'accessibility' },
-  { label: 'Doctor on Call', icon: 'phone' },
-  { label: 'Doctor speaks Hindi/English', icon: 'languages' },
-  { label: 'Couple Friendly Rooms', icon: 'users' },
-  { label: 'Dedicated Medical Team', icon: 'stethoscope' },
-  { label: 'Clean/Sterilized Environment', icon: 'shield' },
-  { label: 'Doctor-led Consultation', icon: 'user-check' },
+  {
+    label: 'Free Parking',
+    image: '/assets/Rectangle%207.png',
+  },
+  {
+    label: 'Wheelchair Accessible',
+    image: '/assets/Rectangle%208.png',
+  },
+  {
+    label: 'Comfortable Waiting Area',
+    image: '/assets/Rectangle%209.png',
+  },
+  {
+    label: 'Clean & Hygienic Washrooms',
+    image: '/assets/Rectangle%2010.png',
+  },
+  {
+    label: 'Private Consultation Rooms',
+    image: '/assets/Rectangle%2011.png',
+  },
+  {
+    label: 'Dedicated Support Staff',
+    image: '/assets/Rectangle%2012.png',
+  },
+  {
+    label: 'Complimentary Tea & Coffee',
+    image: '/assets/Rectangle%2013.png',
+  },
+  {
+    label: 'Convenient Connectivity',
+    image: '/assets/Rectangle%2014.png',
+  },
 ]
 
 export const services = [
@@ -63,7 +82,7 @@ export const services = [
     id: 2,
     title: 'HYDRAFACIAL',
     description:
-      'A multi-step facial that deeply cleanses, exfoliates, and hydrates the skin, leaving it instantly refreshed, glowing and revitalized with no downtime.',
+      'A multi-step facial that deeply cleanses, exfoliates, and hydrates the skin, leaving it instantly refreshed, glowing, and revitalized with no downtime.',
     image: a('/assets/icon-wrap.png'),
   },
   {
@@ -126,7 +145,7 @@ export const services = [
     id: 11,
     title: 'CHEMICAL PEELS',
     description:
-      'Exfoliating skin treatments that remove dead skin cells, improve skin texture, and promote a clearer, brighter complexion.',
+      'Exfoliating skin treatments that remove dead skin cells, improve texture, and reveal brighter, smoother, and clearer skin.',
     image: a('/assets/Chemical Peels.png'),
   },
 ]
@@ -135,41 +154,45 @@ export const reviews = [
   {
     id: 1,
     quote:
-      '"Dr. Pooja gave me a clear treatment plan and explained every step. My skin looks healthier and more even within weeks."',
+      'Dr. Pooja took the time to explain every aspect of my condition. I finally feel like I have a clear treatment plan.',
     image: a('/assets/Rectangle 1.png'),
+    stars: 5,
   },
   {
     id: 2,
     quote:
-      '"Had a video consult and personal follow-up. The clinic team is attentive and the results exceeded my expectations."',
+      'Very thorough and professional. The video consult was seamless and she followed up personally.',
     image: a('/assets/Group 1.png'),
+    stars: 5,
   },
   {
     id: 3,
     quote:
-      '"Excellent diagnosis and minimal wait times. Professional care with natural-looking aesthetic results."',
+      'Excellent diagnosis. Wait time was a bit long but the consultation itself was worth it.',
     image: a('/assets/Group 2.png'),
+    stars: 4,
   },
 ]
 
 export const aboutText = [
-  `Dr. (Maj) Pooja Yadav is a trusted aesthetic physician with over 13 years of clinical experience. With an MBBS and a Fellowship in Aesthetic Medicine from Germany, she brings a unique blend of medical precision and aesthetic artistry to every consultation.`,
-  `Her practice focuses on advanced skin treatments, lasers, injectables, and non-surgical rejuvenation. At Olive Aesthetics, she offers technologies including Diode Laser, PICO Laser, Microdermabrasion, HIFU, and Hydrafacial — all delivered with a doctor-led, patient-first approach.`,
-  `Having served as a Major in the Indian Armed Forces Medical Corps, Dr. Pooja combines military discipline with compassionate care. Her philosophy is simple: natural results, safety first, and treatments tailored to each individual's skin and lifestyle.`,
+  `Dr. (Maj) Pooja Yadav specializes in advanced skin treatments, lasers, and injectables using FDA-approved technologies. At Olive Aesthetics, every consultation is doctor-led with a focus on natural, lasting results tailored to your skin and lifestyle.`,
+  `Her clinical expertise spans HydraFacial, Diode & PICO lasers, HIFU, microneedling, chemical peels, Botox, fillers, and anti-ageing protocols — delivered with medical precision and aesthetic artistry.`,
+  `With over 12 years of clinical practice and a Fellowship in Aesthetic Medicine from Germany, she brings disciplined military-medical training and compassionate care to every patient journey.`,
 ]
 
 export const doctorInfo = {
   name: 'Dr. (Maj) Pooja Yadav',
   qualifications: 'MBBS , Fellowship in Aesthetic Medicine (germany)',
-  reviews: 232,
-  experience: '13+ Years Experience',
+  rating: 4.8,
+  reviews: 312,
+  experience: '12+ Years Experience',
   languages: 'English, Hindi',
-  patients: '1000+ Patient',
+  patients: '1000+ Patients',
   education: 'MBBS , Fellowship in Aesthetic Medicine (germany)',
   location:
-    'Olive Aesthetics First Floor, DSS 327, Sector - 46, HUDA Market Gurgaon 122001',
-  phone: '+91 93180 72088',
-  email: 'oliveaesthetics.in@gmail.com',
+    'Olive Aesthetics First Floor, DSS 227, Sector - 46 HUDA Market Gurgaon 122001',
+  phone: '+91 98180 72098',
+  email: 'Oliveaesthetics.in@gmail.com',
   hours: '10:00AM-07:00PM',
-  addressShort: 'Sector - 46, HUDA Market Gurgaon 122001',
+  addressShort: 'Sector – 46, HUDA Market Gurgaon 122001',
 }

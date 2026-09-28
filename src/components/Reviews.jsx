@@ -15,7 +15,7 @@ export default function Reviews() {
       >
         <motion.h2
           variants={fadeUp}
-          className="gold-underline font-serif text-2xl font-semibold text-olive-dark sm:text-3xl"
+          className="gold-underline font-serif text-2xl font-semibold uppercase tracking-wide text-olive-dark sm:text-3xl"
         >
           Patient Reviews
         </motion.h2>
@@ -38,11 +38,19 @@ export default function Reviews() {
             >
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={16} className="fill-gold text-gold" />
+                  <Star
+                    key={i}
+                    size={16}
+                    className={
+                      i < review.stars
+                        ? 'fill-gold text-gold'
+                        : 'fill-none text-gold'
+                    }
+                  />
                 ))}
               </div>
 
-              <p className="mt-3 flex-1 text-sm italic leading-relaxed text-gray-600">
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600">
                 {review.quote}
               </p>
 
