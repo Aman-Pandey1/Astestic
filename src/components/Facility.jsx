@@ -15,10 +15,16 @@ export default function Facility() {
       >
         <motion.h2
           variants={fadeUp}
-          className="gold-underline font-serif text-2xl font-semibold text-olive-dark sm:text-3xl"
+          className="gold-underline font-serif text-2xl font-semibold uppercase tracking-wide text-olive-dark sm:text-3xl"
+        >
+          Clinic Locations
+        </motion.h2>
+        <motion.p
+          variants={fadeUp}
+          className="mt-3 font-serif text-lg text-olive-dark/90 sm:text-xl"
         >
           Affiliated Medical Facility
-        </motion.h2>
+        </motion.p>
 
         <motion.div
           variants={fadeUp}
