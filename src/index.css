@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-cream text-olive-dark antialiased;
+  }
+
+  /* Offset sticky header when jumping to sections */
+  section[id],
+  #consult {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .section-pad {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-wrap {
+    @apply mx-auto max-w-content;
+  }
+
+  .gold-underline {
+    @apply relative inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-[2px] w-12 bg-gold;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-olive-dark
+      placeholder:text-gray-400 outline-none transition
+      focus:border-gold focus:ring-2 focus:ring-gold/30;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-5 py-2.5
+      font-medium text-olive-dark transition-all duration-300
+      hover:bg-gold-muted hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98];
+  }
+}
