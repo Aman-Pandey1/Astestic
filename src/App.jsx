@@ -6,10 +6,12 @@ import Facility from './components/Facility'
 import Reviews from './components/Reviews'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen overflow-x-hidden bg-cream">
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />

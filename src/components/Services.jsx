@@ -32,8 +32,9 @@ export default function Services() {
                 scale: 1.02,
                 boxShadow: '0 16px 40px rgba(74, 83, 60, 0.14)',
               }}
+              whileTap={{ scale: 0.98 }}
               transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-              className="group cursor-default overflow-hidden rounded-2xl bg-white shadow-card"
+              className="group overflow-hidden rounded-2xl bg-white shadow-card"
             >
               <div className="overflow-hidden">
                 <img

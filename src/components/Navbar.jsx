@@ -59,7 +59,7 @@ export default function Navbar() {
           <img
             src={assets.brand}
             alt="Olive Aesthetics"
-            className="h-10 w-auto object-contain sm:h-11"
+            className="h-8 w-auto max-w-[160px] object-contain sm:h-10 sm:max-w-none lg:h-11"
           />
         </a>
 

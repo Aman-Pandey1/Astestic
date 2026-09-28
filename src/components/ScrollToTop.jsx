@@ -29,7 +29,8 @@ export default function ScrollToTop() {
           whileHover={{ scale: 1.08, y: -2 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: 'spring', stiffness: 360, damping: 22 }}
-          className="fixed bottom-6 right-4 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-olive text-gold shadow-lg sm:bottom-8 sm:right-6 sm:h-12 sm:w-12"
+          className="fixed right-4 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-olive text-gold shadow-lg sm:right-6 sm:h-12 sm:w-12"
+          style={{ bottom: 'max(1.25rem, env(safe-area-inset-bottom, 0px))' }}
         >
           <ArrowUp size={20} strokeWidth={2.5} />
         </motion.button>

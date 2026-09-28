@@ -146,20 +146,23 @@ export default function Hero() {
         viewport={{ once: true, amount: 0.1 }}
         variants={stagger}
       >
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Doctor photo */}
-          <motion.div variants={slideLeft} className="lg:col-span-3">
+          <motion.div
+            variants={slideLeft}
+            className="mx-auto w-full max-w-sm md:max-w-none lg:col-span-3"
+          >
             <div className="overflow-hidden rounded-2xl bg-white shadow-soft">
               <img
                 src={assets.doctor}
                 alt={doctorInfo.name}
-                className="aspect-[3/4] w-full object-cover object-top"
+                className="aspect-[3/4] max-h-[420px] w-full object-cover object-top sm:max-h-none"
               />
             </div>
           </motion.div>
 
           {/* Details + offers */}
-          <motion.div variants={fadeUp} className="lg:col-span-5">
+          <motion.div variants={fadeUp} className="md:col-span-1 lg:col-span-5">
             <div className="mb-2 flex items-center gap-1.5 text-sm text-olive">
               <BadgeCheck size={18} className="fill-olive text-cream" />
               <span className="font-medium">Verified Medical Practitioner</span>
@@ -241,8 +244,8 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Form */}
-          <div className="lg:col-span-4">
+          {/* Form — full width under content on tablet, side column on desktop */}
+          <div className="md:col-span-2 lg:col-span-4">
             <ConsultationForm />
           </div>
         </div>

@@ -8,13 +8,29 @@
   }
 
   body {
-    @apply font-sans bg-cream text-olive-dark antialiased;
+    @apply overflow-x-hidden font-sans bg-cream text-olive-dark antialiased;
   }
 
-  /* Offset sticky header when jumping to sections */
+  /* Custom cursor only on fine pointers (desktop) */
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+
   section[id],
   #consult {
     scroll-margin-top: 5rem;
+  }
+
+  @media (max-width: 767px) {
+    section[id],
+    #consult {
+      scroll-margin-top: 4.5rem;
+    }
+  }
+
+  img {
+    @apply max-w-full;
   }
 }
 
@@ -24,7 +40,7 @@
   }
 
   .section-wrap {
-    @apply mx-auto max-w-content;
+    @apply mx-auto w-full max-w-content;
   }
 
   .gold-underline {
@@ -46,5 +62,16 @@
     @apply inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-5 py-2.5
       font-medium text-olive-dark transition-all duration-300
       hover:bg-gold-muted hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98];
+  }
+
+  .safe-bottom {
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
