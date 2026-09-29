@@ -8,7 +8,12 @@
   }
 
   body {
-    @apply overflow-x-hidden font-sans bg-cream text-olive-dark antialiased;
+    @apply font-sans bg-cream text-olive-dark antialiased;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 
   section[id],
@@ -60,6 +65,16 @@
 
   .safe-bottom {
     bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  /* Single calendar icon on date inputs */
+  .date-single-icon {
+    @apply pr-3;
+  }
+
+  .date-single-icon::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.55;
   }
 }
 

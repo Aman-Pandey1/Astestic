@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { aboutText, doctorInfo, features } from '../data/content'
-import { fadeUp, stagger, scaleIn } from './Motion'
+import { aboutText, doctorInfo } from '../data/content'
+import { fadeUp, stagger } from './Motion'
 
 const infoRows = [
   { label: 'EDUCATION', value: doctorInfo.education },
@@ -19,34 +19,9 @@ export default function About() {
         viewport={{ once: true, amount: 0.12 }}
         variants={stagger}
       >
-        <motion.div
-          variants={stagger}
-          className="grid grid-cols-4 gap-x-3 gap-y-6 sm:gap-x-4 md:grid-cols-8"
-        >
-          {features.map((f) => (
-            <motion.div
-              key={f.label}
-              variants={scaleIn}
-              whileHover={{ y: -3 }}
-              className="flex flex-col items-center gap-2 text-center"
-            >
-              <div className="flex h-12 w-12 items-center justify-center overflow-hidden sm:h-14 sm:w-14">
-                <img
-                  src={f.image}
-                  alt={f.label}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-              <span className="text-[8px] font-medium uppercase leading-tight tracking-wide text-gold-muted sm:text-[9px]">
-                {f.label}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
-
         <motion.h2
           variants={fadeUp}
-          className="gold-underline mt-10 font-serif text-2xl font-semibold text-olive-dark sm:mt-12 sm:text-3xl"
+          className="gold-underline font-serif text-2xl font-semibold text-olive-dark sm:text-3xl"
         >
           About {doctorInfo.name}
         </motion.h2>
