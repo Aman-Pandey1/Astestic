@@ -1,22 +1,13 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  BadgeCheck,
-  Star,
-  ArrowRight,
-  Users,
-  Sparkles,
-  Zap,
-  MessageCircle,
-  Syringe,
-  X,
-} from 'lucide-react'
+import { BadgeCheck, Star, ArrowRight, X } from 'lucide-react'
 import {
   doctorInfo,
   assets,
   features,
   aboutText,
+  highlights,
 } from '../data/content'
 import { WEB3FORMS_KEY, WEB3FORMS_URL, FORM_EMAIL } from '../config/form'
 import { fadeUp, stagger, scaleIn, slideRight } from './Motion'
@@ -35,59 +26,6 @@ const statPills = [
   doctorInfo.experience,
   doctorInfo.languages,
   doctorInfo.patients,
-]
-
-function Em({ children }) {
-  return <span className="font-medium text-black">{children}</span>
-}
-
-const highlights = [
-  {
-    id: 1,
-    icon: Users,
-    text: (
-      <>
-        Refer a friend and get <Em>50%</Em> off on all services.
-      </>
-    ),
-  },
-  {
-    id: 2,
-    icon: Sparkles,
-    text: (
-      <>
-        Underarm lightening treatment buy <Em>2</Em> get <Em>2</Em>
-      </>
-    ),
-  },
-  {
-    id: 3,
-    icon: Zap,
-    text: (
-      <>
-        Full body LHR 8 sessions at <Em>39999/-</Em>
-      </>
-    ),
-  },
-  {
-    id: 4,
-    icon: MessageCircle,
-    text: (
-      <>
-        Buy <Em>4</Em> sessions of GFC and get <Em>4</Em> sessions of hair
-        peptide comp.
-      </>
-    ),
-  },
-  {
-    id: 5,
-    icon: Syringe,
-    text: (
-      <>
-        Botox <Em>300/unit.</Em>
-      </>
-    ),
-  },
 ]
 
 const infoRows = [
@@ -395,7 +333,6 @@ export default function Hero() {
                     className="grid w-full grid-cols-2 gap-2.5 sm:grid-cols-6"
                   >
                     {highlights.map((item, i) => {
-                      const Icon = item.icon
                       const centerBottom =
                         i === 3
                           ? 'sm:col-span-2 sm:col-start-2'
@@ -414,41 +351,38 @@ export default function Hero() {
                             stiffness: 340,
                             damping: 20,
                           }}
-                          className={`flex flex-col items-center gap-2 rounded-lg border border-gold/40 bg-white px-2.5 py-3 text-center sm:px-3 sm:py-4 ${centerBottom}`}
+                          className={`overflow-hidden rounded-lg bg-transparent ${centerBottom}`}
                         >
-                          <Icon
-                            size={28}
-                            strokeWidth={1.4}
-                            className="text-olive/80"
+                          <img
+                            src={item.image}
+                            alt={item.alt}
+                            className="h-full w-full object-contain"
                           />
-                          <p className="text-[11px] font-normal leading-snug text-black/75 sm:text-xs">
-                            {item.text}
-                          </p>
                         </motion.div>
                       )
                     })}
                   </motion.div>
 
-                  {/* Amenity icons — same width / left-right edges as cards */}
+                  {/* Amenity icons — Figma-style equal columns, full labels wrap inside cell */}
                   <motion.div
                     variants={stagger}
-                    className="mt-5 flex w-full items-start justify-between gap-0.5 sm:mt-6 sm:gap-1"
+                    className="mt-5 grid w-full grid-cols-4 gap-x-3 gap-y-5 sm:mt-6 sm:grid-cols-8 sm:gap-x-2 sm:gap-y-0 md:gap-x-3"
                   >
                     {features.map((f) => (
                       <motion.div
                         key={f.label}
                         variants={scaleIn}
                         whileHover={{ y: -2 }}
-                        className="flex min-w-0 flex-1 flex-col items-center gap-1 text-center"
+                        className="flex min-w-0 flex-col items-center text-center"
                       >
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center sm:h-9 sm:w-9">
+                        <div className="flex h-10 w-full shrink-0 items-center justify-center sm:h-11">
                           <img
                             src={f.image}
-                            alt={f.label}
-                            className="max-h-full max-w-full object-contain"
+                            alt=""
+                            className="h-8 w-8 object-contain sm:h-9 sm:w-9"
                           />
                         </div>
-                        <span className="w-full max-w-[4.75rem] text-[8px] font-medium leading-[1.15] text-black/70 sm:max-w-none sm:text-[9px]">
+                        <span className="mt-2 w-full break-words text-[8px] font-medium leading-[1.2] text-black/70 sm:mt-2.5 sm:text-[9px] md:text-[10px]">
                           {f.label}
                         </span>
                       </motion.div>
