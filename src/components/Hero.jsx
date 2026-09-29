@@ -18,7 +18,7 @@ import {
   features,
   aboutText,
 } from '../data/content'
-import { FORM_SUBMIT_URL } from '../config/form'
+import { WEB3FORMS_KEY, WEB3FORMS_URL, FORM_EMAIL } from '../config/form'
 import { fadeUp, stagger, scaleIn, slideRight } from './Motion'
 
 function Stars({ count = 5 }) {
@@ -170,27 +170,42 @@ function ConsultationForm() {
     setSending(true)
     setError('')
 
+    const name = form.name.trim()
+    const phone = `+91 ${form.phone.trim()}`
+    const preferredDate = form.date
+    const message = `Name: ${name}\nPhone: ${phone}\nPreferred Date: ${preferredDate}`
+
     try {
-      const res = await fetch(FORM_SUBMIT_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: form.name,
-          phone: `+91 ${form.phone}`,
-          preferred_date: form.date,
-          _subject: 'Olive Aesthetics — New Consultation Request',
-          _template: 'table',
-          _captcha: 'false',
-        }),
-      })
-
-      const data = await res.json().catch(() => ({}))
-
-      if (!res.ok) {
-        throw new Error(data.message || 'Failed to send. Please try again.')
+      // If Web3Forms key exists → silent email (no mail app)
+      if (WEB3FORMS_KEY) {
+        const res = await fetch(WEB3FORMS_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: 'Olive Aesthetics — New Consultation Request',
+            from_name: name,
+            name,
+            phone,
+            preferred_date: preferredDate,
+            email: FORM_EMAIL,
+            message,
+          }),
+        })
+        const data = await res.json().catch(() => ({}))
+        if (!res.ok || data.success === false) {
+          throw new Error(data.message || 'Failed to send. Please try again.')
+        }
+      } else {
+        // Direct: open Gmail/mail app with form data (no API key needed)
+        const subject = encodeURIComponent(
+          'Olive Aesthetics — New Consultation Request',
+        )
+        const body = encodeURIComponent(message)
+        window.location.href = `mailto:${FORM_EMAIL}?subject=${subject}&body=${body}`
       }
 
       setForm({ name: '', phone: '', date: '' })
