@@ -18,6 +18,7 @@ import {
   features,
   aboutText,
 } from '../data/content'
+import { FORM_SUBMIT_URL } from '../config/form'
 import { fadeUp, stagger, scaleIn, slideRight } from './Motion'
 
 function Stars({ count = 5 }) {
@@ -156,15 +157,52 @@ function ThankYouModal({ open, onClose }) {
 function ConsultationForm() {
   const [form, setForm] = useState({ name: '', phone: '', date: '' })
   const [thanks, setThanks] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
+    if (error) setError('')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setForm({ name: '', phone: '', date: '' })
-    setThanks(true)
+    setSending(true)
+    setError('')
+
+    try {
+      const res = await fetch(FORM_SUBMIT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          phone: `+91 ${form.phone}`,
+          preferred_date: form.date,
+          _subject: 'Olive Aesthetics — New Consultation Request',
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      })
+
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Failed to send. Please try again.')
+      }
+
+      setForm({ name: '', phone: '', date: '' })
+      setThanks(true)
+    } catch (err) {
+      setError(
+        err.message ||
+          'Something went wrong. Please call us or try WhatsApp.',
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -196,6 +234,7 @@ function ConsultationForm() {
               onChange={handleChange}
               placeholder="Enter your full name"
               className="input-field rounded-xl"
+              disabled={sending}
             />
           </div>
 
@@ -214,7 +253,8 @@ function ConsultationForm() {
                 value={form.phone}
                 onChange={handleChange}
                 placeholder="Enter your phone number"
-                className="w-full px-3 py-2.5 text-sm outline-none"
+                className="w-full px-3 py-2.5 text-sm outline-none disabled:bg-gray-50"
+                disabled={sending}
               />
             </div>
           </div>
@@ -230,6 +270,7 @@ function ConsultationForm() {
               value={form.date}
               onChange={handleChange}
               className="input-field date-single-icon rounded-xl"
+              disabled={sending}
             />
           </div>
 
@@ -238,12 +279,19 @@ function ConsultationForm() {
             Aesthetics medical coordination team.
           </p>
 
+          {error && (
+            <p className="rounded-lg bg-red-50 px-3 py-2 text-xs text-red-600">
+              {error}
+            </p>
+          )}
+
           <button
             type="submit"
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-gold-muted hover:shadow-md active:scale-[0.98]"
+            disabled={sending}
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-gold-muted hover:shadow-md active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
           >
-            Request Consultation
-            <ArrowRight size={16} />
+            {sending ? 'Sending...' : 'Request Consultation'}
+            {!sending && <ArrowRight size={16} />}
           </button>
         </form>
       </motion.div>
