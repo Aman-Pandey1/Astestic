@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Phone } from 'lucide-react'
 
-const PHONE = '8429205391'
+const PHONE = '9818072098'
 const WHATSAPP = `https://wa.me/91${PHONE}`
 const TEL = `tel:+91${PHONE}`
 
