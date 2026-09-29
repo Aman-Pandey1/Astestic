@@ -7,7 +7,7 @@ import {
   assets,
   features,
   aboutText,
-  highlights,
+  highlights as highlightAssets,
 } from '../data/content'
 import { WEB3FORMS_KEY, WEB3FORMS_URL, FORM_EMAIL } from '../config/form'
 import { fadeUp, stagger, scaleIn, slideRight } from './Motion'
@@ -26,6 +26,65 @@ const statPills = [
   doctorInfo.experience,
   doctorInfo.languages,
   doctorInfo.patients,
+]
+
+/** Very soft emphasis — barely heavier than body */
+function Em({ children }) {
+  return <span className="text-black">{children}</span>
+}
+
+const highlights = [
+  {
+    id: 1,
+    image: highlightAssets[0].image,
+    alt: highlightAssets[0].alt,
+    text: (
+      <>
+        Refer a friend and get <Em>50%</Em> off on all services.
+      </>
+    ),
+  },
+  {
+    id: 2,
+    image: highlightAssets[1].image,
+    alt: highlightAssets[1].alt,
+    text: (
+      <>
+        Underarm lightening treatment buy <Em>2</Em> get <Em>2</Em>
+      </>
+    ),
+  },
+  {
+    id: 3,
+    image: highlightAssets[2].image,
+    alt: highlightAssets[2].alt,
+    text: (
+      <>
+        Full body LHR 8 sessions at <Em>39999/-</Em>
+      </>
+    ),
+  },
+  {
+    id: 4,
+    image: highlightAssets[3].image,
+    alt: highlightAssets[3].alt,
+    text: (
+      <>
+        Buy <Em>4</Em> sessions of GFC and get <Em>4</Em> sessions of hair
+        peptide comp.
+      </>
+    ),
+  },
+  {
+    id: 5,
+    image: highlightAssets[4].image,
+    alt: highlightAssets[4].alt,
+    text: (
+      <>
+        Botox <Em>300/unit.</Em>
+      </>
+    ),
+  },
 ]
 
 const infoRows = [
@@ -351,13 +410,20 @@ export default function Hero() {
                             stiffness: 340,
                             damping: 20,
                           }}
-                          className={`overflow-hidden rounded-lg bg-transparent ${centerBottom}`}
+                          className={`flex flex-col items-center rounded-lg border border-gold/40 bg-white px-2.5 pb-3 pt-3 text-center sm:px-3 sm:pb-4 sm:pt-3.5 ${centerBottom}`}
                         >
-                          <img
-                            src={item.image}
-                            alt={item.alt}
-                            className="h-full w-full object-contain"
-                          />
+                          {/* Icon only — crop out baked text from Figma asset */}
+                          <div className="relative h-12 w-[4.5rem] shrink-0 overflow-hidden sm:h-14 sm:w-[5.25rem]">
+                            <img
+                              src={item.image}
+                              alt=""
+                              aria-hidden
+                              className="pointer-events-none absolute left-1/2 top-0 h-[230%] w-[160%] max-w-none -translate-x-1/2 select-none object-cover object-[center_8%]"
+                            />
+                          </div>
+                          <p className="mt-3 text-[11px] font-normal leading-snug text-black/70 sm:mt-3.5 sm:text-xs">
+                            {item.text}
+                          </p>
                         </motion.div>
                       )
                     })}
