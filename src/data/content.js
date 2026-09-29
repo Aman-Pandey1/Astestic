@@ -41,31 +41,31 @@ export const features = [
     image: '/assets/Rectangle%207.png',
   },
   {
-    label: 'Wheelchair Accessible',
+    label: 'Wheelchair\nAccessible',
     image: '/assets/Rectangle%208.png',
   },
   {
-    label: 'Comfortable Waiting Area',
+    label: 'Comfortable\nWaiting Area',
     image: '/assets/Rectangle%209.png',
   },
   {
-    label: 'Clean & Hygienic Washrooms',
+    label: 'Clean &\nHygienic\nWashrooms',
     image: '/assets/Rectangle%2010.png',
   },
   {
-    label: 'Private Consultation Rooms',
+    label: 'Private\nConsultation\nRooms',
     image: '/assets/Rectangle%2011.png',
   },
   {
-    label: 'Dedicated Support Staff',
+    label: 'Dedicated\nSupport Staff',
     image: '/assets/Rectangle%2012.png',
   },
   {
-    label: 'Complimentary Tea & Coffee',
+    label: 'Complimentary\nTea & Coffee',
     image: '/assets/Rectangle%2013.png',
   },
   {
-    label: 'Convenient Connectivity',
+    label: 'Convenient\nConnectivity',
     image: '/assets/Rectangle%2014.png',
   },
 ]

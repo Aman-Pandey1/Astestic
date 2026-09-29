@@ -286,8 +286,8 @@ export default function Hero() {
           {/* RIGHT — scrolls until education card reaches image level */}
           <div className="lg:col-span-9">
             {/* Top: details + form — amenities share exact width with highlight cards */}
-            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-9 lg:gap-7">
-              <motion.div variants={fadeUp} className="min-w-0 lg:col-span-5">
+            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-9 lg:gap-6">
+              <motion.div variants={fadeUp} className="min-w-0 lg:col-span-6">
                 <div className="mb-2 flex items-center gap-1.5 text-sm text-olive">
                   <BadgeCheck size={18} className="fill-olive text-cream" />
                   <span className="font-medium">Verified Medical Practitioner</span>
@@ -322,7 +322,7 @@ export default function Hero() {
                   ))}
                 </div>
 
-                {/* Cards + amenities: one column so edges stay level (Figma) */}
+                {/* Cards + amenities — same width, amenities one line (Figma) */}
                 <div className="mt-6 w-full">
                   <h3 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-olive-dark">
                     Key Professional Highlights
@@ -363,10 +363,10 @@ export default function Hero() {
                     })}
                   </motion.div>
 
-                  {/* Amenity icons — Figma-style equal columns, full labels wrap inside cell */}
+                  {/* One line under cards — equal columns, same width as cards */}
                   <motion.div
                     variants={stagger}
-                    className="mt-5 grid w-full grid-cols-4 gap-x-3 gap-y-5 sm:mt-6 sm:grid-cols-8 sm:gap-x-2 sm:gap-y-0 md:gap-x-3"
+                    className="mt-5 grid w-full grid-cols-4 gap-x-2 gap-y-4 sm:mt-6 sm:grid-cols-8 sm:gap-x-1.5 sm:gap-y-0 lg:gap-x-2"
                   >
                     {features.map((f) => (
                       <motion.div
@@ -375,23 +375,23 @@ export default function Hero() {
                         whileHover={{ y: -2 }}
                         className="flex min-w-0 flex-col items-center text-center"
                       >
-                        <div className="flex h-10 w-full shrink-0 items-center justify-center sm:h-11">
+                        <div className="flex h-9 w-full shrink-0 items-center justify-center sm:h-10">
                           <img
                             src={f.image}
                             alt=""
-                            className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+                            className="h-7 w-7 object-contain sm:h-8 sm:w-8"
                           />
                         </div>
-                        <span className="mt-2 w-full break-words text-[8px] font-medium leading-[1.2] text-black/70 sm:mt-2.5 sm:text-[9px] md:text-[10px]">
+                        <p className="mt-1.5 whitespace-pre-line text-[8px] font-medium leading-[1.25] text-black/70 sm:mt-2 sm:text-[9px] lg:text-[10px]">
                           {f.label}
-                        </span>
+                        </p>
                       </motion.div>
                     ))}
                   </motion.div>
                 </div>
               </motion.div>
 
-              <div className="lg:col-span-4 lg:pt-0">
+              <div className="lg:col-span-3 lg:pt-0">
                 <ConsultationForm />
               </div>
             </div>
