@@ -1,10 +1,6 @@
 /** Inbox for consultation form */
 export const FORM_EMAIL = 'amanpandey.developer@gmail.com'
 
-/**
- * Optional silent send (no mail app opens):
- * Get free key from https://web3forms.com → put in `.env`
- * VITE_WEB3FORMS_ACCESS_KEY=your_key
- */
-export const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
+/** Web3Forms access key — included in build (client-side by design) */
+export const WEB3FORMS_KEY = '389e4412-3c11-452c-b310-e7c610205451'
 export const WEB3FORMS_URL = 'https://api.web3forms.com/submit'
